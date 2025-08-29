@@ -1,0 +1,235 @@
+Fast • Simple • Reliable
+Core Stack (Production Ready)
+
+Backend
+
+Language:     Go 1.21+
+Framework:    Fiber v2 (fastest Go web framework)
+ORM:          GORM v2 (mature, reliable)
+Database:     PostgreSQL 16+ (ACID compliance for financial data)
+Cache:        Redis 7+ (sessions, real-time features)
+
+Frontend
+Framework:    Next.js 14 (App Router)
+Language:     TypeScript
+Styling:      Tailwind CSS
+State:        Zustand/Jotai (lightweight, simple)
+HTTP Client:  Axios with interceptors
+
+Infrastructure & DevOps Deployment
+Containerization:  Docker + Docker Compose
+Reverse Proxy:     Nginx
+
+CI/CD
+Version Control:   Git + GitHub
+CI/CD:            GitHub Actions
+Testing:          Go testing (Backend) + Jest (frontend)
+
+
+
+Basic routes
+
+College ERP API Routes
+
+Authentication Routes
+POST   /api/auth/login              # User login
+POST   /api/auth/logout             # User logout  
+POST   /api/auth/refresh            # Refresh JWT token
+POST   /api/auth/forgot-password    # Password reset request
+POST   /api/auth/reset-password     # Reset password with token
+GET    /api/auth/profile            # Get current user profile
+PUT    /api/auth/profile            # Update user profile
+POST   /api/auth/change-password    # Change password
+Student Management Routes
+# Student CRUD Operations
+GET    /api/students                # List all students (with pagination/filters)
+POST   /api/students                # Create new student
+GET    /api/students/:id            # Get student by ID
+PUT    /api/students/:id            # Update student information
+DELETE /api/students/:id            # Soft delete student
+PATCH  /api/students/:id/status     # Update student status (active/inactive)
+
+# Student Search & Filters
+GET    /api/students/search         # Search students by name, roll number, etc.
+GET    /api/students/course/:course # Get students by course
+GET    /api/students/batch/:year    # Get students by admission year
+GET    /api/students/department/:dept # Get students by department
+
+# Student Documents
+POST   /api/students/:id/documents  # Upload student documents
+GET    /api/students/:id/documents  # Get student documents
+DELETE /api/students/:id/documents/:docId # Delete document
+Admission Management Routes
+# Admission Process
+POST   /api/admissions/apply        # Submit admission application
+GET    /api/admissions              # List all applications (admin)
+GET    /api/admissions/:id          # Get specific application
+PUT    /api/admissions/:id          # Update application status
+POST   /api/admissions/:id/approve  # Approve admission
+POST   /api/admissions/:id/reject   # Reject admission
+
+# Admission Analytics
+GET    /api/admissions/stats        # Admission statistics
+GET    /api/admissions/pending      # Pending applications count
+GET    /api/admissions/by-course    # Applications by course
+Fee Management Routes
+# Fee Structure
+GET    /api/fees/structure          # Get fee structure by course
+POST   /api/fees/structure          # Create/update fee structure
+GET    /api/fees/structure/:course  # Fee structure for specific course
+
+# Fee Transactions
+POST   /api/fees/payment            # Process fee payment
+GET    /api/fees/student/:id        # Get student's fee history
+GET    /api/fees/pending/:id        # Get pending fees for student
+GET    /api/fees/receipt/:paymentId # Generate fee receipt
+GET    /api/fees/defaulters         # List fee defaulters
+
+# Fee Analytics
+GET    /api/fees/collection-stats   # Fee collection statistics
+GET    /api/fees/monthly-report     # Monthly collection report
+GET    /api/fees/course-wise        # Course-wise fee collection
+Hostel Management Routes
+# Room Management
+GET    /api/hostels/rooms           # List all rooms
+POST   /api/hostels/rooms           # Add new room
+PUT    /api/hostels/rooms/:id       # Update room details
+DELETE /api/hostels/rooms/:id       # Remove room
+
+# Room Allocation
+POST   /api/hostels/allocate        # Allocate room to student
+DELETE /api/hostels/deallocate/:studentId # Deallocate room
+GET    /api/hostels/occupancy       # Current occupancy status
+GET    /api/hostels/student/:id     # Get student's room details
+
+# Hostel Analytics
+GET    /api/hostels/stats           # Occupancy statistics
+GET    /api/hostels/availability    # Available rooms by type
+GET    /api/hostels/waiting-list    # Students on waiting list
+Examination Management Routes
+# Exam Setup
+POST   /api/exams                   # Create new exam
+GET    /api/exams                   # List all exams
+PUT    /api/exams/:id               # Update exam details
+DELETE /api/exams/:id               # Cancel exam
+
+# Results Management
+POST   /api/exams/:id/results       # Upload exam results
+GET    /api/exams/:id/results       # Get exam results
+PUT    /api/exams/:id/results/:studentId # Update individual result
+
+# Student Results
+GET    /api/students/:id/results    # Get all results for student
+GET    /api/students/:id/transcript # Generate transcript
+GET    /api/exams/:id/student/:studentId # Specific exam result
+Library Management Routes
+# Book Management
+GET    /api/library/books           # List all books
+POST   /api/library/books           # Add new book
+PUT    /api/library/books/:id       # Update book details
+DELETE /api/library/books/:id       # Remove book
+
+# Issue/Return System
+POST   /api/library/issue           # Issue book to student
+POST   /api/library/return          # Return book
+GET    /api/library/student/:id     # Books issued to student
+GET    /api/library/overdue         # Overdue books list
+
+# Library Analytics
+GET    /api/library/stats           # Library usage statistics
+GET    /api/library/popular         # Popular books
+Academic Management Routes
+# Course Management
+GET    /api/courses                 # List all courses
+POST   /api/courses                 # Create new course
+PUT    /api/courses/:id             # Update course
+DELETE /api/courses/:id             # Delete course
+
+# Subject Management  
+GET    /api/subjects                # List subjects
+POST   /api/subjects                # Add subject
+PUT    /api/subjects/:id            # Update subject
+
+# Timetable
+GET    /api/timetable/:course       # Get timetable for course
+POST   /api/timetable               # Create/update timetable
+Staff Management Routes
+# Staff CRUD
+GET    /api/staff                   # List all staff
+POST   /api/staff                   # Add new staff member
+PUT    /api/staff/:id               # Update staff details
+DELETE /api/staff/:id               # Remove staff
+
+# Staff Assignment
+POST   /api/staff/:id/assign-course # Assign course to faculty
+DELETE /api/staff/:id/unassign/:courseId # Unassign course
+GET    /api/staff/:id/courses       # Get assigned courses
+Attendance Management Routes
+# Attendance Recording
+POST   /api/attendance              # Mark attendance
+GET    /api/attendance/class/:id    # Get class attendance
+GET    /api/attendance/student/:id  # Student attendance history
+
+# Attendance Analytics  
+GET    /api/attendance/stats        # Overall attendance statistics
+GET    /api/attendance/defaulters   # Low attendance students
+GET    /api/attendance/course/:id   # Course-wise attendance
+Notification Routes
+# Notifications
+GET    /api/notifications           # Get user notifications
+POST   /api/notifications/send      # Send notification (admin)
+PUT    /api/notifications/:id/read  # Mark as read
+DELETE /api/notifications/:id       # Delete notification
+
+# Bulk Communications
+POST   /api/notifications/broadcast # Broadcast to all students
+POST   /api/notifications/course    # Send to specific course students
+POST   /api/notifications/email     # Send email notifications
+POST   /api/notifications/sms       # Send SMS notifications
+Dashboard & Analytics Routes
+# Admin Dashboard
+GET    /api/dashboard/overview      # Main dashboard metrics
+GET    /api/dashboard/students      # Student statistics
+GET    /api/dashboard/finances      # Financial overview
+GET    /api/dashboard/academic      # Academic statistics
+
+# Reports Generation
+GET    /api/reports/admission       # Admission reports
+GET    /api/reports/fees            # Fee collection reports  
+GET    /api/reports/attendance      # Attendance reports
+GET    /api/reports/examination     # Examination reports
+POST   /api/reports/custom          # Generate custom reports
+File Management Routes
+# Document Upload/Download
+POST   /api/files/upload            # Upload file
+GET    /api/files/:id               # Download file
+DELETE /api/files/:id               # Delete file
+GET    /api/files/student/:id       # Get student's files
+System Administration Routes
+# User Management (Super Admin only)
+GET    /api/admin/users             # List all users
+POST   /api/admin/users             # Create user account
+PUT    /api/admin/users/:id         # Update user
+DELETE /api/admin/users/:id         # Deactivate user
+POST   /api/admin/users/:id/reset-password # Reset user password
+
+# System Settings
+GET    /api/admin/settings          # Get system settings
+PUT    /api/admin/settings          # Update settings
+GET    /api/admin/audit-logs        # View audit logs
+GET    /api/admin/system-health     # System health check
+WebSocket Routes (Real-time)
+WS     /ws/dashboard               # Real-time dashboard updates
+WS     /ws/notifications           # Live notifications
+WS     /ws/attendance              # Real-time attendance updates
+WS     /ws/fee-payments            # Live payment notifications
+External Integration Routes
+# Payment Gateway Integration
+POST   /api/payments/initiate       # Start payment process
+GET    /api/payments/status/:id     # Check payment status
+POST   /api/payments/webhook        # Payment gateway webhook
+
+# SMS/Email Integration
+POST   /api/integrations/sms        # Send SMS
+POST   /api/integrations/email      # Send email
+GET    /api/integrations/status     # Check service status
