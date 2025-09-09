@@ -13,8 +13,8 @@ const Students = () => {
   const students = [
     {
       id: "ST001",
-      name: "John Doe",
-      email: "john.doe@student.edu",
+      name: "Naman Singh",
+      email: "naman.singh@student.edu",
       course: "Computer Science Engineering",
       year: "3rd Year",
       status: "Active",
@@ -23,9 +23,9 @@ const Students = () => {
     },
     {
       id: "ST002", 
-      name: "Sarah Wilson",
-      email: "sarah.wilson@student.edu",
-      course: "Mechanical Engineering", 
+      name: "Manav Sharma",
+      email: "manav.sharma@student.edu",
+      course: "Mechanical Engineering",
       year: "2nd Year",
       status: "Active",
       phone: "+91 9876543211",
@@ -33,8 +33,8 @@ const Students = () => {
     },
     {
       id: "ST003",
-      name: "Mike Johnson",
-      email: "mike.johnson@student.edu",
+      name: "Chinki Kumari",
+      email: "chinki.kumari@student.edu",
       course: "Civil Engineering",
       year: "4th Year", 
       status: "Inactive",
@@ -43,8 +43,8 @@ const Students = () => {
     },
     {
       id: "ST004",
-      name: "Emma Davis",
-      email: "emma.davis@student.edu", 
+      name: "Mad Ram",
+      email: "mad.ram@student.edu",
       course: "Electronics Engineering",
       year: "1st Year",
       status: "Active",
